@@ -11,6 +11,15 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
+$router->get('/', 'HomeController@index');
+
+$router->group(['prefix'=>'api/v1'], function() use ($router)
+{
+    $router->get('postulantes', 'HomeController@postulantes');
+    $router->get('postulante/{id}', 'HomeController@byid');
+    $router->get('postulante/rango/{inicio}/{fin}', 'HomeController@rango');
+
 });
