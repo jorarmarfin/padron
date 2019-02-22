@@ -15,6 +15,8 @@ class HomeController extends Controller
             'rutas'=>'Rutas disponibles en el sistema',
             '/api/v1/postulantes'=>'muestra todos los datos',
             '/api/v1/postulante/{id}'=>'muestra el registro por id de los 5000, remplazo la palbra id por un numero',
+            '/api/v1/ingresantes'=>'muestra todos los ingresantes',
+            '/api/v1/ingresante/{id}'=>'muestra un ingresante por cantidad',
             '/api/v1/postulante/rango/{ini}/{fin}'=>'muestra un rango de datos cambiar ini y fin por numeros',
         ];
         return response()->json($config, 200);
@@ -25,9 +27,21 @@ class HomeController extends Controller
         return response()->json($postulante, 200);
 
     }
+    public function ingbyid($id)
+    {
+        $postulante = Padron::where('espeing','<>','')->take($id)->get();
+        return response()->json($postulante, 200);
+
+    }
     public function postulantes()
     {
         $postulante = Padron::all();
+        return response()->json($postulante, 200);
+
+    }
+    public function ingresantes()
+    {
+        $postulante = Padron::where('espeing','<>','')->get();
         return response()->json($postulante, 200);
 
     }

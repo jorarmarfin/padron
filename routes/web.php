@@ -20,6 +20,8 @@ $router->group(['prefix'=>'api/v1'], function() use ($router)
 {
     $router->get('postulantes', 'HomeController@postulantes');
     $router->get('postulante/{id}', 'HomeController@byid');
+    $router->get('ingresantes', 'HomeController@ingresantes');
+    $router->get('ingresante/{id}', 'HomeController@ingbyid');
     $router->get('postulante/rango/{inicio}/{fin}', 'HomeController@rango');
 
 });
